@@ -1,105 +1,119 @@
-# AI Travel Guide 🌍
+# 🌍 AI Travel Guide
 
-An AI-powered travel guide that generates informative descriptions of tourist destinations and converts them into spoken audio. Built with Flask, Google's Gemini API, Murf AI, and HTML, CSS, and JavaScript.
+An AI-powered travel guide that generates informative descriptions of tourist destinations and converts them into spoken audio using Google Gemini and Murf AI.
 
-## Features
+## ✨ Features
 
-- **AI-generated travel guides:** Generate summaries or detailed descriptions of destinations.
-- **Multilingual support:** Request descriptions in supported languages.
-- **Text-to-speech narration:** Convert generated descriptions into audio using Murf AI.
-- **Audio playback:** Listen to the generated travel guide directly through the frontend.
+- **AI-generated descriptions:** Generate summaries and detailed travel guides for destinations.
+- **Multilingual support:** Generate descriptions in supported languages.
+- **Text-to-speech:** Convert travel descriptions into narrated audio using Murf AI.
+- **Audio playback:** Listen to generated guides through the web interface.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-| Component | Technology |
-|---|---|
-| Frontend | HTML, CSS, JavaScript |
-| Backend | Python, Flask |
-| AI text generation | Google Gemini API |
-| Text-to-speech | Murf AI |
-| Cross-origin requests | Flask-CORS |
+- **Frontend:** HTML, CSS, JavaScript
+- **Backend:** Python, Flask
+- **AI text generation:** Google Gemini API
+- **Text-to-speech:** Murf AI
+- **Cross-origin requests:** Flask-CORS
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
-AI-Travel-Guide/
-├── backend/
+levelx/
+├── Backend/
 │   ├── app.py
 │   ├── requirements.txt
-│   └── .env
-├── fe/
+│   └── .env  # Local only, not committed
+├── Frontend/
 │   ├── index.html
 │   └── index.js
 ├── .gitignore
 └── README.md
 ```
 
-The `.env` file contains private credentials and must not be committed to Git.
-
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Python 3
+- Python 3.10 or later
 - A Google Gemini API key
 - A Murf AI API key
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME.git
-cd YOUR_REPOSITORY_NAME
+git clone https://github.com/YOUR_USERNAME/ai-travel-guide.git
+cd ai-travel-guide
 ```
 
-### 2. Install backend dependencies
+Replace `YOUR_USERNAME` with your GitHub username.
+
+### 2. Install dependencies
 
 ```bash
-cd backend
+cd Backend
 python -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
 ```
 
-On Windows, activate the environment with:
+Activate the environment.
+
+**Linux/macOS:**
+
+```bash
+source .venv/bin/activate
+```
+
+**Windows PowerShell:**
 
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
 
-### 3. Configure environment variables
+Install the required packages:
 
-Create a `.env` file inside `backend/`:
+```bash
+python -m pip install -r requirements.txt
+```
+
+### 3. Configure API keys
+
+Create a `.env` file inside `Backend/`:
 
 ```dotenv
 GEMINI_API_KEY=your_gemini_api_key
 MURF_API_KEY=your_murf_api_key
 ```
 
-Use your own credentials. Never publish API keys in source code or commit them to Git.
+Use your own API keys. Never commit this file to GitHub.
 
 ### 4. Run the backend
 
-From the `backend/` directory:
+From the `Backend/` directory:
 
 ```bash
 python app.py
 ```
 
-The local API runs at `http://127.0.0.1:5000`.
+The local backend should run at:
+
+`http://127.0.0.1:5000`
 
 ### 5. Run the frontend
 
-Open `fe/index.html` using a local development server, such as the Live Server extension in Visual Studio Code.
+Open `Frontend/index.html` using a local development server, such as the Live Server extension in Visual Studio Code.
 
-The frontend must be configured to send requests to the backend URL.
+Ensure the frontend sends requests to the running Flask backend.
 
-## API Endpoint
+## 🔌 API Endpoint
 
 ### Generate an audio guide
 
-`POST /generate-audio-guide`
+**Method:** `POST`
 
-Example request:
+**Endpoint:** `/generate-audio-guide`
+
+**Example request:**
 
 ```json
 {
@@ -111,27 +125,38 @@ Example request:
 }
 ```
 
-Successful responses contain:
+A successful response contains:
 
-- `description`: The AI-generated travel guide.
-- `audioBase64`: The generated audio encoded as Base64.
+- `description`: The generated travel guide.
+- `audioBase64`: Base64-encoded audio data.
 
-## Deployment
+## ☁️ Deployment
 
-The backend can be deployed as a Python web service, and the frontend can be hosted as a static website.
+The application can be deployed using separate frontend and backend hosting services.
 
-Before deployment:
-1. Configure API keys as environment variables on the hosting platform.
-2. Update the frontend API URL to use the deployed backend.
-3. Configure CORS to allow requests from the deployed frontend.
-4. Test both text generation and audio playback on the live site.
+- **Backend:** Render or another Python web hosting service.
+- **Frontend:** Netlify or another static hosting service.
+- **Environment variables:** Configure API keys through the backend hosting dashboard.
+- **Frontend API URL:** Update the frontend to use the deployed backend URL.
+- **CORS:** Allow requests from the deployed frontend domain.
 
-## Security
+Production deployment should use a WSGI server such as Gunicorn rather than Flask's development server.
 
-- Keep `.env` files out of version control.
-- Never expose API keys in frontend JavaScript.
-- Rotate any API keys accidentally exposed in source code.
+## 🔐 Security
 
-## License
+- Never commit `.env` files.
+- Keep API keys out of frontend JavaScript.
+- Rotate any API credentials accidentally exposed.
+- Restrict production CORS to trusted frontend origins.
 
-This project is available under the license specified by the repository owner.
+## 🗺️ Future Improvements
+
+- Interactive maps and route recommendations.
+- Nearby attractions and restaurant recommendations.
+- Budget-based travel itineraries.
+- Additional narration languages and voices.
+- Video-based destination guides.
+
+## 📄 License
+
+No license has been specified yet. All rights remain with the project owner unless a license is added to the repository.
