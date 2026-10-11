@@ -4,7 +4,7 @@
 // --- Configuration ---
 
 const API_URL =
-  "https://ai-travel-guide-w7ll.onrender.com/generate-audio-guide";
+  "https://ai-travel-guide-w7l1.onrender.com/generate-audio-guide";
 
 const VOICES = {
   English: { Male: "Matthew", Female: "Alicia" },
